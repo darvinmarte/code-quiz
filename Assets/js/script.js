@@ -37,11 +37,13 @@ var terminalbash = 'terminal-bash'
 var forloops = 'for-loops'
 var counsellog = 'console-log'
 
+var wrongAnswer= -15 secondsLeft;
 var secondsLeft = 75;
 
 //FUNCTIONS
 // WHEN I answer a question incorrectly
 // THEN time is subtracted from the clock
+// Deduct 15 seconds when question answered wrong
 for (var i = 0; i < secondsLeft.length; i--) {
     ();
    }
