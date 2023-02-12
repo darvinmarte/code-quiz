@@ -19,12 +19,16 @@
 var timeEl = document.querySelector(".x");
 
 // Selects element by id
-var mainEl = document.getElementById("start-quiz");
+var startbutton = document.getElementById('startbutton')
+var strings = document.getElementById('strings')
+var booleans = document.getElementById('booleans')
+var alerts = document.getElementById('alerts')
+
 
 //DATA
 //LOOK AT LESSON 5
-var strings = '1strings'
-var booleans = '1booleans'
+var strings1 = 'strings'
+var booleans1 = 'booleans'
 var alerts = '1alerts'
 var numbers = '1numbers'
 var quotes = '1quotes'
@@ -53,7 +57,7 @@ var x = setInterval(function() {
 
     function setTime() {
         // Sets interval in variable
-        var timerInterval = setInterval(function() {
+        var timerInterval = setInterval(startbutton,() {
           secondsLeft--;
           timeEl.textContent = secondsLeft + "Times up!";
       
