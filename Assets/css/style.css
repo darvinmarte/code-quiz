@@ -1,0 +1,26 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.questions{
+ display: flex;
+ flex-direction: column;
+padding: 10em;
+}
+
+h3{
+    display: flex;
+    justify-content: center;
+}
+
+button{
+    color: white;
+    border: solid 10px;
+    background-color: purple;
+    border-radius: 25%;
+    font-size: 1em;
+}
+
+button:hover{
+    color: lightpink;
+}
