@@ -9,7 +9,6 @@ body {
 .questions{
  display: flex;
  flex-direction: column;
-padding: 10em;
 }
 
 h3{
@@ -18,13 +17,21 @@ h3{
 }
 
 button{
+justify-content: center;
     color: white;
     border: solid 10px;
     background-color: purple;
-    border-radius: 25%;
+    border-radius: 25px;
     font-size: 1em;
+    padding: 10px 24px;
+    width: 25%
 }
 
 button:hover{
     color: lightpink;
+}
+ 
+.options{
+    display: flex;
+    justify-content: center;
 }

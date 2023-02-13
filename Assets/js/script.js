@@ -12,26 +12,86 @@
 // WHEN all questions are answered or the timer reaches 0
 // THEN the game is over
 
-
+//index that starts at 0 goes up to the next question
+//one variable determined 
 
 // DEPENDENCIES (DOM ELEMENT)
 // Selects element by class
-var timeEl = document.querySelector(".x");
+
 
 // Selects element by id
 var startbutton = document.getElementById('startbutton')
+var secondsLeftEl = document.getElementById('secondsLeft')
 var strings = document.getElementById('strings')
 var booleans = document.getElementById('booleans')
 var alerts = document.getElementById('alerts')
+
+
+// global question number variable
+var questionNumber = 0;
+// array of objects
+var questions = [
+  {
+    questionText: "Commonly used data types DO NOT include ____.",
+    answerChoices: [
+      "strings",
+      "booleans",
+      "alerts",
+      "numbers"
+    ],
+    correctAnswer: "alerts"
+  },
+  {
+    questionText: "The condition in an if/else statement is enclosed within ____.",
+    answerChoices: [
+      "quotes",
+      "curly-brackets",
+      "parenthesis",
+      "square-brackets"
+    ],
+    correctAnswer: "parenthesis"
+  },
+  {
+    questionText: "Arrays in Javascript can be used to store ___.",
+    answerChoices: [
+      "numbers and strings",
+      "other arrays",
+      "booleans",
+      "all of the above"
+    ],
+    correctAnswer: "numbers and strings"
+  }
+  {
+    questionText: "String values must be enclosed within ___ when being assigned to variables.",
+    answerChoices: [
+      "commas",
+      "curly brackets",
+      "quotes",
+      "all of the above"
+    ],
+    correctAnswer: "quotes"
+  }
+  {
+    questionText: "A very useful tool used during development and debugging for printing content to the debugger is:",
+    answerChoices: [
+      "javascript",
+      "terminal/bash",
+      "for loops",
+      "console log"
+    ],
+    correctAnswer: "console log"
+  }
+
+]
 
 
 //DATA
 //LOOK AT LESSON 5
 var strings1 = 'strings'
 var booleans1 = 'booleans'
-var alerts = '1alerts'
-var numbers = '1numbers'
-var quotes = '1quotes'
+var alerts = 'alerts'
+var numbers = 'numbers'
+var quotes = 'quotes'
 var curlybrackets = 'curly-brackets'
 var parenthesis = 'parenthesis'
 var squarebrackets = 'sqaure-brackets'
@@ -41,7 +101,7 @@ var terminalbash = 'terminal-bash'
 var forloops = 'for-loops'
 var counsellog = 'console-log'
 
-var wrongAnswer= -15 secondsLeft;
+var wrongAnswer= -15
 var secondsLeft = 75;
 
 //FUNCTIONS
@@ -57,9 +117,9 @@ var x = setInterval(function() {
 
     function setTime() {
         // Sets interval in variable
-        var timerInterval = setInterval(startbutton,() {
+        var timerInterval = setInterval(function () {
           secondsLeft--;
-          timeEl.textContent = secondsLeft + "Times up!";
+          secondsLeftEl.textContent = secondsLeft + " seconds left";
       
           if(secondsLeft === 0) {
             // Stops execution of action at set interval
@@ -69,6 +129,8 @@ var x = setInterval(function() {
           }
       
         }, 1000);
+      }
+        //function load question function, that changes question text and answer choices  
 
 // Function to create and end quiz
 function sendMessage() {
