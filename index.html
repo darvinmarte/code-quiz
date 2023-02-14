@@ -10,24 +10,23 @@
   <body>
     <header>
       <h1>Code Quiz</h1>
+      <p>Time: <span id="secondsLeft">75</span></p>
     </header>
     <!-- Start Button -->
-    <div class="container">
-<button id="start-quiz">Start Quiz</button>
-<span id="secondsLeft">75</span>
-</div>
-<!-- Questions -->
-<section class="questions">
-    <h3>
-        Question #1: Commonly used data types DO NOT include ____.
-    </h3>
-    <div class='options'>
-    <button id="“answer1”">1. strings</button>
-    <button id="“answer2”">2. booleans</button>
-    <button id="“answer3”">3. alerts</button>
-    <button id="“answer4”">4. numbers</button>
-</div>
-  
+    <div id="container">
+      <button id="start-quiz">Start Quiz</button>
+    </div>
+    <!-- Questions -->
+    <section id="questions" class="hidden">
+      <h3 id="title">Question #1: Commonly used data types DO NOT include ____.</h3>
+      <div id="options">
+        <!-- <button id="“answer1”">1. strings</button>
+        <button id="“answer2”">2. booleans</button>
+        <button id="“answer3”">3. alerts</button>
+        <button id="“answer4”">4. numbers</button> -->
+      </div>
+    </section>
+
     <script src="./Assets/js/script.js"></script>
   </body>
 </html>
