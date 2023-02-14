@@ -2,7 +2,6 @@
 // WHEN I click the start button
 // THEN a timer starts and I am presented with a question
 
-
 // WHEN I answer a question
 // THEN I am presented with another question
 
@@ -13,44 +12,42 @@
 // THEN the game is over
 
 //index that starts at 0 goes up to the next question
-//one variable determined 
+//one variable determined
 
 // DEPENDENCIES (DOM ELEMENT)
 // Selects element by class
 
-
 // Selects element by id
-var startButton = document.getElementById('start-quiz')
-var secondsLeftEl = document.getElementById('secondsLeft')
-var containerEl = document.getElementById('container')
-var questionsEl = document.getElementById('questions')
-var titleEl = document.getElementById('title')
-var optionsEl = document.getElementById('options')
+var startButton = document.getElementById("start-quiz");
+var secondsLeftEl = document.getElementById("secondsLeft");
+var containerEl = document.getElementById("container");
+var questionsEl = document.getElementById("questions");
+var titleEl = document.getElementById("title");
+var optionsEl = document.getElementById("options");
+var messageEl = document.getElementById('message')
+var submitEl = document.getElementById('submit')
 var timerInterval;
 
+var secondsLeft = 75;
 // global question number variable
 var questionNumber = 0;
 // array of objects
 var questions = [
   {
     questionText: "Commonly used data types DO NOT include ____.",
-    answerChoices: [
-      "strings",
-      "booleans",
-      "alerts",
-      "numbers"
-    ],
-    correctAnswer: "alerts"
+    answerChoices: ["strings", "booleans", "alerts", "numbers"],
+    correctAnswer: "alerts",
   },
   {
-    questionText: "The condition in an if/else statement is enclosed within ____.",
+    questionText:
+      "The condition in an if/else statement is enclosed within ____.",
     answerChoices: [
       "quotes",
       "curly-brackets",
       "parenthesis",
-      "square-brackets"
+      "square-brackets",
     ],
-    correctAnswer: "parenthesis"
+    correctAnswer: "parenthesis",
   },
   {
     questionText: "Arrays in Javascript can be used to store ___.",
@@ -58,69 +55,90 @@ var questions = [
       "numbers and strings",
       "other arrays",
       "booleans",
-      "all of the above"
+      "all of the above",
     ],
-    correctAnswer: "numbers and strings"
+    correctAnswer: "numbers and strings",
   },
   {
-    questionText: "String values must be enclosed within ___ when being assigned to variables.",
-    answerChoices: [
-      "commas",
-      "curly brackets",
-      "quotes",
-      "all of the above"
-    ],
-    correctAnswer: "quotes"
+    questionText:
+      "String values must be enclosed within ___ when being assigned to variables.",
+    answerChoices: ["commas", "curly brackets", "quotes", "all of the above"],
+    correctAnswer: "quotes",
   },
   {
-    questionText: "A very useful tool used during development and debugging for printing content to the debugger is:",
-    answerChoices: [
-      "javascript",
-      "terminal/bash",
-      "for loops",
-      "console log"
-    ],
-    correctAnswer: "console log"
-  }
-  
-]
-var secondsLeft = 75;
+    questionText:
+      "A very useful tool used during development and debugging for printing content to the debugger is:",
+    answerChoices: ["javascript", "terminal/bash", "for loops", "console log"],
+    correctAnswer: "console log",
+  },
+];
 
-function start(){
+
+function start() {
   //start timer
   timerInterval = setInterval(function () {
-              secondsLeft--;
-              secondsLeftEl.textContent = secondsLeft + " seconds left";
-          
-              if(secondsLeft === 0) {
-                // Stops execution of action at set interval
-                clearInterval(timerInterval);
-             
-              }
-          
-            }, 1000);
+    secondsLeft--;
+    secondsLeftEl.textContent = secondsLeft + " seconds left";
+
+    if (secondsLeft === 0) {
+      // Stops execution of action at set interval
+      clearInterval(timerInterval);
+    }
+  }, 1000);
 
   //make container disappear
-containerEl.classList.add('hidden')
+  containerEl.classList.add("hidden");
   // make question container appear
-questionsEl.classList.remove('hidden')
+  questionsEl.classList.remove("hidden");
   // call question function
-  getQuestion()
-};
-
-function getQuestion(){
-//display question title
-titleEl.textContent = questions[0].questionText
-// create the buttons for the optionsEl
-
-
+  getQuestion();
 }
 
-startButton.addEventListener('click',start)
+function getQuestion() {
+  //display question title
+  titleEl.textContent = questions[questionNumber].questionText;
+  // create the buttons for the optionsEl
+  for (let index = 1; index <= 4; index++) {
+    var button = document.querySelector("#answer" + index);
+    // forloop getting reference for each answer choice button and setting text content using question bank
+    button.textContent = questions[questionNumber].answerChoices[index - 1];
+    //going through the arrays in the answer choices
+  }
+}
+
+// determine whether right or wrong
+optionsEl.addEventListener("click", handleOptionsClick);
+//optionsel is container and when clicking we try to figure out which button is clicked and try to see if its the correct answer
+function handleOptionsClick(event) {
+  var answerChoice = event.target.textContent;
+  var isCorrect = isChoiceCorrect(answerChoice);
+  questionNumber++
+  //loads next question or goes to high score page
+  if (questionNumber < questions.length) {
+    getQuestion()
+  }
+  else {
+    location.replace('highscore.html')
+  }
+}
+
+function isChoiceCorrect(answerChoice) {
+  console.log(answerChoice);
+  if (answerChoice === questions[questionNumber].correctAnswer) {
+    // compare users answer choice with correct question
+    messageEl.textContent = 'Correct!'
+    return true;
+  } else {
+    messageEl.textContent = "Wrong!"
+    secondsLeft -= 15;
+    return false;
+  }
+}
+console.log(location.href)
+startButton.addEventListener("click", start);
 
 // //DATA
 // //LOOK AT LESSON 5
-
 
 // var wrongAnswer= -15
 
@@ -140,23 +158,23 @@ startButton.addEventListener('click',start)
 //         var timerInterval = setInterval(function () {
 //           secondsLeft--;
 //           secondsLeftEl.textContent = secondsLeft + " seconds left";
-      
+
 //           if(secondsLeft === 0) {
 //             // Stops execution of action at set interval
 //             clearInterval(timerInterval);
 //             // Calls function to create and append image
 //             sendMessage();
 //           }
-      
+
 //         }, 1000);
 //       }
-//         //function load question function, that changes question text and answer choices  
+//         //function load question function, that changes question text and answer choices
 
 // // Function to create and end quiz
 // function sendMessage() {
-  
+
 //   }
-  
+
 //   setTime();
 // // INITIALIZATION
 
@@ -165,15 +183,15 @@ startButton.addEventListener('click',start)
 //     if (var === "right answer") {
 //       var = "CORRECT!";
 //     }
-//     // If user clicks wrong answer 
+//     // If user clicks wrong answer
 //     else {
 //       var = "INCORRECT!";
 //     }
 //   });
-  
+
 // // WHEN the game is over
 // // THEN I can save my initials and score
-  
+
 // var tagName = prompt("Please enter initals", "enter tag");
 
 // if (tagName !== "//INITIALS") {
@@ -181,10 +199,10 @@ startButton.addEventListener('click',start)
 //   } else {
 //     // Creates element based on tag entered by user
 //     var tag = document.createElement(tagName);
-  
+
 //     // Adds text content to created tag
 //     tag.textContent = "This was made via prompts. It's a " + tagName + ".";
-    
+
 //     // Appends tag as child of document body
 //     document.body.appendChild(tag);
 //   }
@@ -196,8 +214,8 @@ startButton.addEventListener('click',start)
 //     Score: score.value
 //   };
 
-//   // TODO: Set new submission to local storage 
+//   // TODO: Set new submission to local storage
 //   localStorage.setItem('userInital', JSON.stringify(userInput));
 //   renderMessage();
-  
+
 // });
