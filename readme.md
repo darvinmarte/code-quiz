@@ -18,7 +18,7 @@ N/A
 - This is the link to the deployed website
 https://darvinmarte.github.io/code-quiz/
 
-![](./assets/images/)
+![](./assets/images/Screenshot%202023-02-14%20at%209.16.39%20AM.png)
 ## Credits
 
 N/A
