@@ -9,13 +9,13 @@ header{
     display: flex;
     justify-content: center;
 }
-.options{
+#options {
  display: flex;
- flex-direction: column;
+ justify-content: center;
 }
 .time{
-    display: flex;
-   color: purple;
+display: flex;
+color: purple;
 }
 
 h3{
@@ -24,7 +24,6 @@ h3{
 }
 
 button{
-justify-content: center;
     color: white;
     border: solid 10px;
     background-color: purple;
@@ -38,11 +37,28 @@ button:hover{
     color: lightpink;
 }
  
-.options{
-    display: flex;
-    justify-content: center;
-}
 
 .hidden{
     display: none;
 }
+
+@media screen and (min-width: 768px) {
+    header {
+      flex-direction: row;
+    }
+    ul,
+    li {
+      flex-direction: row;
+      justify-content: flex-end;
+    }
+  
+    .projects {
+      flex-direction: row;
+    }
+  }
+  
+  /* Small smartphones  */
+  @media screen and (min-width: 576px) {
+    {
+    
+  }
