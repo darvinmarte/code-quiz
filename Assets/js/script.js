@@ -26,6 +26,7 @@ var titleEl = document.getElementById("title");
 var optionsEl = document.getElementById("options");
 var messageEl = document.getElementById('message')
 var submitEl = document.getElementById('submit')
+var initals = document.getElementById('initials')
 var timerInterval;
 
 var secondsLeft = 75;
@@ -137,13 +138,13 @@ function isChoiceCorrect(answerChoice) {
 console.log(location.href)
 startButton.addEventListener("click", start);
 
-//   //ADD LOCAL STORAGE
-//    // TODO: Create user object from submission
+//ADD LOCAL STORAGE
+//TODO: Create user object from submission
    var userInitial = {
-    Initials: firstNameInput.value,
+    initials: initials.value,
     Score: score.value
   };
 
-localStorage.setItem('initals', JSON.stringify(userInput));
+localStorage.setItem('userInitials', JSON.stringify(userInput));
   renderMessage();
 // });
