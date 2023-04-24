@@ -19,6 +19,9 @@ var questionsEl = document.getElementById("questions");
 var titleEl = document.getElementById("title");
 var optionsEl = document.getElementById("options");
 var messageEl = document.getElementById("message");
+var submitEl = document.getElementById('submit')
+var initals = document.getElementById('name')
+var timerInterval;
 
 // array of objects
 var questions = [
@@ -125,3 +128,17 @@ function isChoiceCorrect(answerChoice) {
 }
 
 startButtonEl.addEventListener("click", start);
+
+//Add local storage to store users score and name
+
+submitEl.addEventListener("click", function(event) {
+    event.preventDefault();
+
+var userData = {
+    Name: Name.value,
+    Score: score.value
+};
+
+localStorage.setItem('userData', JSON.stringify(userInput));
+renderMessage();
+});
