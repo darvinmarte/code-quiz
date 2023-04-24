@@ -12,6 +12,8 @@
 // THEN the game is over
 
 //Getting Elements/IDS/CLASSES from HTML
+var startButton = document.getElementById("start-quiz");
+var secondsLeftEl = document.getElementById("secondsLeft");
 var containerEl = document.getElementById("container");
 var questionsEl = document.getElementById("questions");
 var titleEl = document.getElementById("title");
@@ -47,3 +49,30 @@ questionText:"A very useful tool used during development and debugging for print
 },
 ];
 
+var secondsLeft = 75;
+// global question number variable
+var questionNumber = 0;
+
+function start() {
+    //start timer
+    timerInterval = setInterval(function () {
+    secondsLeft--;
+    secondsLeftEl.textContent = secondsLeft + " seconds left";
+    if (secondsLeft === 0) {
+        // Stops execution of action at set interval
+        clearInterval(timerInterval);
+    }
+    }, 1000);
+}
+
+function getQuestion() {
+    //display question title
+    titleEl.textContent = questions[questionNumber].questionText;
+    // create the buttons for the optionsEl
+    for (let index = 1; index <= 4; index++) {
+    var button = document.querySelector("#answer" + index);
+      // forloop getting reference for each answer choice button and setting text content using question bank
+    button.textContent = questions[questionNumber].answerChoices[index - 1];
+      //going through the arrays in the answer choices
+    }
+}
