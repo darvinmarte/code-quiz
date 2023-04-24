@@ -12,7 +12,7 @@
 // THEN the game is over
 
 //Getting Elements/IDS/CLASSES from HTML
-var startButton = document.getElementById("startbutton");
+var startButtonEl = document.getElementById("startbutton");
 var secondsLeftEl = document.getElementById("secondsLeft");
 var containerEl = document.getElementById("container");
 var questionsEl = document.getElementById("questions");
@@ -102,12 +102,26 @@ optionsEl.addEventListener("click", handleOptionsClick);
 function handleOptionsClick(event) {
   var answerChoice = event.target.textContent;
   var isCorrect = isChoiceCorrect(answerChoice);
-  questionNumber++
+  questionNumber++;
   //loads next question or goes to high score page
   if (questionNumber < questions.length) {
-    getQuestion()
-  }
-  else {
-    location.replace('highscore.html')
+    getQuestion();
+  } else {
+    location.replace("highscore.html");
   }
 }
+
+function isChoiceCorrect(answerChoice) {
+  console.log(answerChoice);
+  if (answerChoice === questions[questionNumber].correctAnswer) {
+    // compare users answer choice with correct question
+    messageEl.textContent = "Correct!";
+    return true;
+  } else {
+    messageEl.textContent = "Wrong!";
+    secondsLeft -= 15;
+    return false;
+  }
+}
+
+startButtonEl.addEventListener("click", start);

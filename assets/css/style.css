@@ -38,4 +38,12 @@ button {
     font-size: 1em;
     padding: 10px 24px;
     width: 25%;
+}
+
+button:hover {
+    color: lightpink;
   }
+  
+  .hidden {
+    display: none;
+}
