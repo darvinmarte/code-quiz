@@ -95,3 +95,19 @@ function getQuestion() {
     //going through the arrays in the answer choices
   }
 }
+
+// determine whether right or wrong
+optionsEl.addEventListener("click", handleOptionsClick);
+//optionsel is container and when clicking we try to figure out which button is clicked and try to see if its the correct answer
+function handleOptionsClick(event) {
+  var answerChoice = event.target.textContent;
+  var isCorrect = isChoiceCorrect(answerChoice);
+  questionNumber++
+  //loads next question or goes to high score page
+  if (questionNumber < questions.length) {
+    getQuestion()
+  }
+  else {
+    location.replace('highscore.html')
+  }
+}

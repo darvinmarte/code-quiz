@@ -5,8 +5,10 @@ header {
   display: flex;
   justify-content: center;
 }
+.container{
+display: flex;
+}
 .startbutton {
-  display: flex;
   justify-content: center;
 }
 
@@ -27,3 +29,13 @@ h3 {
   display: flex;
   justify-content: center;
 }
+
+button {
+    color: white;
+    border: solid 10px;
+    background-color: purple;
+    border-radius: 25px;
+    font-size: 1em;
+    padding: 10px 24px;
+    width: 25%;
+  }
