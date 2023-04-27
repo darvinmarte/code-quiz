@@ -22,7 +22,7 @@ display: flex;
   color: purple;
   background-color: lavender;
   border: .5em purple solid;
-  border-radius: 20%;
+  border-radius: 35%;
 }
 
 h3 {
@@ -47,3 +47,4 @@ button:hover {
   .hidden {
     display: none;
 }
+

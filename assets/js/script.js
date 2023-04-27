@@ -17,10 +17,10 @@ var secondsLeftEl = document.getElementById("secondsLeft");
 var containerEl = document.getElementById("container");
 var questionsEl = document.getElementById("questions");
 var titleEl = document.getElementById("title");
-var optionsEl = document.getElementById("options");
+var optionsEl = document.querySelector("#options");
 var messageEl = document.getElementById("message");
-var submitEl = document.getElementById('submit')
-var initals = document.getElementById('name')
+var submitEl = document.querySelector('#submitinitials')
+var nameEl = document.getElementById('name')
 var timerInterval;
 
 // array of objects
@@ -74,7 +74,7 @@ function start() {
   timerInterval = setInterval(function () {
     secondsLeft--;
     secondsLeftEl.textContent = secondsLeft + " seconds left";
-    if (secondsLeft === 0) {
+    if (secondsLeft <= 0) {
       // Stops execution of action at set interval
       clearInterval(timerInterval);
     }
@@ -99,20 +99,25 @@ function getQuestion() {
   }
 }
 
+function displayEndOfScreen(){
+
+  submitEl.classList.remove('hidden')
+}
 // determine whether right or wrong
-optionsEl.addEventListener("click", handleOptionsClick);
+;
 //optionsel is container and when clicking we try to figure out which button is clicked and try to see if its the correct answer
 function handleOptionsClick(event) {
   var answerChoice = event.target.textContent;
-  var isCorrect = isChoiceCorrect(answerChoice);
+isChoiceCorrect(answerChoice);
   questionNumber++;
   //loads next question or goes to high score page
   if (questionNumber < questions.length) {
     getQuestion();
   } else {
-    location.replace("highscore.html");
+    displayEndOfScreen()
   }
 }
+
 
 function isChoiceCorrect(answerChoice) {
   console.log(answerChoice);
@@ -127,18 +132,25 @@ function isChoiceCorrect(answerChoice) {
   }
 }
 
+function save(event) {
+  console.log('hello')
+  event.preventDefault();
+  let name = nameEl.value.trim()
+  let score = secondsLeft
+  let storedScores = JSON.parse(localStorage.getItem('storedScores')) || []
+  let userData = {
+      name: name,
+      score: score
+  };
+  storedScores.push(userData)
+  localStorage.setItem('storedScores', JSON.stringify(storedScores));
+  
+  window.location.replace.apply(href='/index.html')
+  };
+  
+submitEl.addEventListener("click", save)
+
 startButtonEl.addEventListener("click", start);
 
-//Add local storage to store users score and name
-
-submitEl.addEventListener("click", function(event) {
-    event.preventDefault();
-
-var userData = {
-    Name: Name.value,
-    Score: score.value
-};
-
-localStorage.setItem('userData', JSON.stringify(userInput));
-renderMessage();
-});
+optionsEl.addEventListener("click", handleOptionsClick)
+//button in a tag "retake quiz" href = /index.html
